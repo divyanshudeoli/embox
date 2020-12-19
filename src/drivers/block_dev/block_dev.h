@@ -29,7 +29,6 @@ struct block_dev {
 	struct dev_module dev_module;
 
 	const struct block_dev_ops *driver;
-	void *privdata;
 
 	uint64_t size;
 	size_t block_size;
@@ -111,7 +110,7 @@ extern int block_devs_init(void);
 
 #include <drivers/device.h>
 static inline struct block_dev *dev_module_to_bdev(struct dev_module *devmod) {
-	return (struct block_dev *) devmod->dev_priv;
+	return (struct block_dev *) devmod;
 }
 
 #endif /* BLOCK_DEV_H_ */
